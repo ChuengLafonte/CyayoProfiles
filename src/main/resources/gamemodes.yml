@@ -1,0 +1,162 @@
+# ==============================================================================
+#                    CyayoProfiles - Challenge Gamemodes
+# ==============================================================================
+# Konfigurasi lengkap untuk Mode Tantangan (Ironman, Hardcore, Hunted, Cursed).
+# Pemain dapat mengaktifkan hingga maksimal 4 mode sekaligus pada 1 profil!
+# Aturan mode paling ketat (seperti Ironman) selalu diprioritaskan agar tidak ada exploit.
+
+# Jumlah maksimal mode tantangan yang boleh dikombinasikan dalam 1 profil
+max_selectable_modes: 4
+
+# Simbol & nama saat pemain tidak memilih tantangan apa pun (Normal Mode)
+normal_mode:
+  display_name: "<white>Normal"
+  symbol: ""
+
+# ==============================================================================
+# PENGATURAN MEKANIK SPESIFIK TIAP MODE
+# ==============================================================================
+settings:
+  ironman:
+    # Pisahkan Ender Chest khusus per profil Ironman (tersimpan di SQLite/MySQL)
+    separate_ender_chest: true
+    # Pisahkan saldo Vault khusus untuk profil Ironman agar tidak memakai uang akun Normal
+    separate_vault_economy: true
+    # Blokir Ironman memungut item yang dijatuhkan pemain lain (termasuk hasil kill)
+    block_drop_pickup_from_others: true
+    # Cegah pemain lain memungut item yang dijatuhkan oleh Ironman
+    prevent_others_pickup_ironman_drops: true
+    # Blokir interaksi langsung ke pemain lain (seperti Shift+Klik Kanan Trade antar pemain)
+    block_player_interact_entities: true
+    # Blokir akses & penghancuran container milik pemain/profil lain atau container dunia
+    # Catatan: Ironman tetap bisa membuka/memecahkan container yang ditaruh sendiri oleh profil ini, serta tetap bisa carry saat lawan boss!
+    block_external_containers: true
+    # Izinkan Ironman membuka chest loot dungeon/desa yang baru ter-generate (belum pernah disentuh pemain)
+    allow_worldgen_loot_chests: true
+    # Cegah pemain/profil lain membuka/merusak container milik Ironman serta blokir hopper transfer lintas profil
+    protect_ironman_containers: true
+    # Daftar command yang DILARANG digunakan saat bermain di mode Ironman (lowercase, tanpa '/', mendukung 'namaplugin:*')
+    blocked_commands:
+      - "trade"
+      - "pay"
+      - "epay"
+      - "ah"
+      - "auction"
+      - "auc"
+      - "zauction"
+      - "shop"
+      - "gift"
+      - "baltop"
+
+  hardcore:
+    # Apakah pemain boleh memilih jumlah nyawa sendiri saat membuat karakter?
+    player_selectable_lives: true
+    min_lives: 1
+    max_lives: 3
+    default_lives: 1
+    # Umumkan ke seluruh server ketika karakter Hardcore gugur (set "none" di messages.yml untuk mematikan)
+    broadcast_on_fallen: true
+
+  hunted:
+    # Durasi izin menyerang balik (detik) jika pemain damai memukul pemain Hunted terlebih dahulu
+    self_defense_duration_seconds: 30
+    # Durasi (detik) jejak penyerang terakhir agar kill tidak langsung (jurang/lava/crystal) tetap terhitung sebagai PvP kill
+    pvp_kill_attribution_seconds: 15
+    # Daftar world aman di mana PvP Hunted dinonaktifkan (mutlak)
+    safe_worlds:
+      - "lobby"
+      - "spawn"
+      - "hub"
+    # Daftar nama region WorldGuard yang menjadi Safezone mutlak bagi Hunted
+    safe_regions:
+      - "spawn"
+      - "safezone"
+    # Hormati flag 'pvp: deny' dari WorldGuard secara mutlak
+    respect_worldguard_pvp_deny: true
+    # Jika true, item hanya drop saat dibunuh oleh pemain lain. Jika false, mati karena monster juga drop.
+    drop_only_on_player_kill: true
+    # Persentase peluang drop tiap kategori item (0.0 sampai 1.0, contoh 0.50 = 50%)
+    drop_chances:
+      inventory: 0.50
+      armor: 0.15
+      main_hand: 0.10
+      offhand: 0.15
+    # Anti-Exploit Ironman+Hunted: Jika true, item Ironman yang drop saat mati di mode Hunted akan hangus (tidak bisa diloot teman untuk bypass Ironman).
+    destroy_drops_when_ironman_dies: true
+
+  cursed:
+    # Pengali damage yang diterima (1.5 = 50% lebih sakit)
+    incoming_damage_multiplier: 1.5
+    # Pengali damage yang dihasilkan (1.0 = normal, 0.85 = lebih lemah)
+    outgoing_damage_multiplier: 1.0
+    # Matikan regenerasi HP alami dari kenyang (wajib heal pakai potion/skill)
+    disable_natural_regen: true
+
+# ==============================================================================
+# DAFTAR MODE, SIMBOL BADGE, DAN BONUS YANG DIBERIKAN
+# ==============================================================================
+# Catatan Bonus (saling menumpuk/stacking jika pemain mengaktifkan > 1 mode):
+#  - class_xp_bonus       : 0.50 = +50% Class XP
+#  - gathering_xp_bonus   : 0.50 = +50% CyayoGathering XP
+#  - race_xp_bonus        : 0.25 = +25% CyayoMythRaces XP
+#  - gathering_luck_bonus : 10.0 = +10 Gathering Luck
+#  - gathering_speed_bonus: 5.0  = +5% Gathering Speed
+#  - gathering_double_bonus: 5.0 = +5% Double Gather Chance
+#  - mythic_stats         : Bonus stat apapun di MythicLib / MMOItems (LUCK, DEFENSE, dll.)
+
+modes:
+  ironman:
+    enabled: true
+    display_name: "<gray><bold>Ironman</bold>"
+    symbol: "<gray>[🛡]"
+    bonuses:
+      class_xp_bonus: 0.0
+      gathering_xp_bonus: 0.0
+      race_xp_bonus: 0.0
+      gathering_luck_bonus: 0.0
+      gathering_speed_bonus: 0.0
+      gathering_double_bonus: 0.0
+      mythic_stats: {}
+
+  hardcore:
+    enabled: true
+    display_name: "<red><bold>Hardcore</bold>"
+    symbol: "<red>[💀]"
+    bonuses:
+      class_xp_bonus: 0.15
+      gathering_xp_bonus: 0.15
+      race_xp_bonus: 0.10
+      gathering_luck_bonus: 5.0
+      gathering_speed_bonus: 0.0
+      gathering_double_bonus: 2.0
+      mythic_stats:
+        LUCK: 5.0
+
+  hunted:
+    enabled: true
+    display_name: "<dark_red><bold>Hunted</bold>"
+    symbol: "<dark_red>[⚔]"
+    bonuses:
+      class_xp_bonus: 0.50
+      gathering_xp_bonus: 0.50
+      race_xp_bonus: 0.25
+      gathering_luck_bonus: 15.0
+      gathering_speed_bonus: 10.0
+      gathering_double_bonus: 10.0
+      mythic_stats:
+        LUCK: 10.0
+
+  cursed:
+    enabled: true
+    display_name: "<dark_purple><bold>Cursed</bold>"
+    symbol: "<dark_purple>[☠]"
+    bonuses:
+      class_xp_bonus: 0.50
+      gathering_xp_bonus: 0.35
+      race_xp_bonus: 0.25
+      gathering_luck_bonus: 10.0
+      gathering_speed_bonus: 5.0
+      gathering_double_bonus: 5.0
+      mythic_stats:
+        LUCK: 10.0
+

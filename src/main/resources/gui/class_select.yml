@@ -1,0 +1,122 @@
+# ==============================================================================
+#                  CyayoProfiles - GUI: Class Selection Menu
+# ==============================================================================
+
+title: "<dark_gray>Select Class (Slot #{slot})"
+size: 36
+
+filler_items:
+  outer_border:
+    material: "BLACK_STAINED_GLASS_PANE"
+    custom_model_data: 0
+    name: " "
+    slots: [0, 1, 2, 3, 5, 6, 7, 8, 9, 17, 18, 26, 27, 28, 29, 30, 32, 33, 34, 35]
+
+  inner_accent:
+    material: "GRAY_STAINED_GLASS_PANE"
+    custom_model_data: 0
+    name: " "
+    slots: [10, 13, 16, 19, 20, 21, 22, 23, 24, 25]
+
+custom_items:
+  guide_book:
+    slots: [4]
+    material: "WRITABLE_BOOK"
+    custom_model_data: 0
+    name: "<gold><bold>Class Selection - Slot #{slot}</bold>"
+    lore:
+      - "<gray>Player: <white>{player}"
+      - ""
+      - "<gray>Each class has unique base health, speed,"
+      - "<gray>and allowed weapon/armor gear requirements."
+      - ""
+      - "<yellow>Click any class below to continue!"
+
+classes:
+  warrior:
+    slots: [11]
+    material: "IRON_SWORD"
+    custom_model_data: 0
+    name: "<red><bold>Warrior</bold>"
+    lore:
+      - "<dark_gray>Melee Combatant"
+      - ""
+      - "<gray>Base Health: <red>{max_health} ❤"
+      - "<gray>Allowed Gear: <yellow>{allowed_gear}"
+      - ""
+      - "<gray>Frontline melee fighter with high durability."
+      - ""
+      - "<yellow>▶ Click to select this class!"
+
+  mage:
+    slots: [12]
+    material: "BLAZE_ROD"
+    custom_model_data: 0
+    name: "<aqua><bold>Mage</bold>"
+    lore:
+      - "<dark_gray>Magic Caster"
+      - ""
+      - "<gray>Base Health: <red>{max_health} ❤"
+      - "<gray>Allowed Gear: <yellow>{allowed_gear}"
+      - ""
+      - "<gray>Wielder of deadly arcane spells from afar."
+      - ""
+      - "<yellow>▶ Click to select this class!"
+
+  archer:
+    slots: [14]
+    material: "BOW"
+    custom_model_data: 0
+    name: "<green><bold>Archer</bold>"
+    lore:
+      - "<dark_gray>Ranged Specialist"
+      - ""
+      - "<gray>Base Health: <red>{max_health} ❤"
+      - "<gray>Allowed Gear: <yellow>{allowed_gear}"
+      - ""
+      - "<gray>Fast, nimble, and deadly accurate at long range."
+      - ""
+      - "<yellow>▶ Click to select this class!"
+
+  battlemage:
+    slots: [15]
+    material: "ENCHANTED_GOLDEN_APPLE"
+    custom_model_data: 0
+    name: "<gold><bold>Battle Mage (Hybrid)</bold>"
+    lore:
+      - "<dark_gray>Hybrid Combatant"
+      - ""
+      - "<gray>Base Health: <red>{max_health} ❤"
+      - "<gray>Allowed Gear: <yellow>{allowed_gear}"
+      - ""
+      - "<gray>Capable of wielding both Warrior and Mage weapons!"
+      - ""
+      - "<yellow>▶ Click to select this class!"
+
+back_button:
+  slots: [31]
+  material: "ARROW"
+  custom_model_data: 0
+  name: "<yellow><bold>« Back to Profiles</bold>"
+  lore:
+    - "<gray>Click to cancel and return."
+
+# Default appearance when a class requires a permission the player does not have
+# (Can also be overridden per class using classes.<id>.locked:)
+locked_class_default:
+  material: "BARRIER"
+  custom_model_data: 0
+  name: "<red><bold>🔒 {class_display} <dark_gray>[LOCKED]</bold>"
+  lore:
+    - "<dark_gray>Restricted Class"
+    - ""
+    - "<gray>Base Health: <red>{max_health} ❤"
+    - "<gray>Allowed Gear: <yellow>{allowed_gear}"
+    - ""
+    - "<red>You do not have permission to select this class!"
+    - "{locked_hint}"
+
+fill_empty:
+  enabled: true
+  material: "BLACK_STAINED_GLASS_PANE"
+  name: " "

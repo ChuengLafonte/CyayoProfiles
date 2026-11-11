@@ -1,0 +1,56 @@
+name: CyayoProfiles
+version: '1.0.0'
+main: id.cyayo.profiles.CyayoProfiles
+api-version: '1.21'
+author: Cyayo
+description: Wynncraft-style Multi-Character Class Profile System with SQL Storage, Challenge Gamemodes, and MMOItems Restriction
+
+softdepend:
+  - MMOItems
+  - MythicLib
+  - PlaceholderAPI
+  - Vault
+  - WorldGuard
+  - CyayoGathering
+  - CyayoMythRaces
+  - CyayoDeathPenalty
+
+commands:
+  profile:
+    description: Open the player character profile menu
+    aliases: [profiles, character, char]
+  cyayoprofiles:
+    description: Admin commands for CyayoProfiles
+    aliases: [cprofiles, cprofile, cyayoprofile]
+
+permissions:
+  cyayoprofiles.use:
+    description: Permission to open the character profile menu
+    default: true
+  cyayoprofiles.switch:
+    description: Permission to switch character profiles
+    default: true
+  cyayoprofiles.create:
+    description: Permission to create a new character profile
+    default: true
+  cyayoprofiles.delete:
+    description: Permission to delete a character profile
+    default: true
+  cyayoprofiles.slots.1:
+    description: Permission to have 1 profile slot
+    default: true
+  cyayoprofiles.slots.2:
+    description: Permission to have 2 profile slots
+    default: op
+  cyayoprofiles.slots.3:
+    description: Permission to have 3 profile slots
+    default: op
+  cyayoprofiles.slots.4:
+    description: Permission to have 4 profile slots
+    default: op
+  cyayoprofiles.slots.5:
+    description: Permission to have 5 profile slots
+    default: op
+  cyayoprofiles.admin:
+    description: Full administrator permission for CyayoProfiles
+    default: op

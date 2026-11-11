@@ -1,0 +1,85 @@
+# ==============================================================================
+#                     CyayoProfiles - Leveling Configuration
+# ==============================================================================
+# Format selaras dengan CyayoGathering (Action Bar, Progress Bar, Rewards, Milestones).
+# TIPS: Semua notifikasi (title, subtitle, chat_message, broadcast, action_bar, sound)
+# jika diset menjadi 'none' atau "none", sistem TIDAK AKAN MENGIRIM/MEMBUNYIKAN apapun.
+# Baik chat_message maupun broadcast mendukung teks tunggal maupun format list (termasuk " " untuk baris kosong).
+
+enabled: true
+max_level: 60
+max_xp_text: "MAX"
+
+# Formula Otomatis Kebutuhan XP Tiap Level:
+# type: "EXPONENTIAL" -> round(base_xp * (level ^ curve_multiplier))
+# type: "FIXED"       -> menggunakan custom nilai di section levels.<lvl>.required_xp
+formula:
+  type: "EXPONENTIAL"
+  base_xp: 100
+  curve_multiplier: 1.5
+
+# Action Bar Notification when gaining Class XP
+action_bar:
+  enabled: true
+  show_on_max_level: false
+  max_level_format: "none"
+  format: "<color:#55FF55>+{xp} {class} XP &8(&e{current_xp}&7/&a{req_xp}&8) &7[{progress_bar}&7]"
+  progress_bar:
+    length: 10
+    symbol: "■"
+    completed_color: "&a"
+    remaining_color: "&7"
+
+# ==============================================================================
+# LEVEL UP REWARDS
+# ==============================================================================
+rewards:
+  per_level:
+    sound: "ENTITY_PLAYER_LEVELUP:1.0:1.2"
+    title: "<gradient:#FFD700:#FFA500><bold>LEVEL UP!</bold></gradient>"
+    subtitle: "&7Class &e{class} &7reached &aLevel {level}&7!"
+    chat_message:
+      - "&8[&6CyayoProfiles&8] &7Congratulations! Your &e{class} &7reached &aLevel {level}&7!"
+    broadcast: "none"
+    commands: []
+
+  milestones:
+    5:
+      sound: "UI_TOAST_CHALLENGE_COMPLETE:1.0:1.0"
+      title: "<gradient:#E07A5F:#F4F1DE><bold>LEVEL 5 MILESTONE!</bold></gradient>"
+      subtitle: "&7Reached &e{class} Level 5&7!"
+      chat_message:
+        - "&8[&6CyayoProfiles&8] &6★ <bold>CONGRATULATIONS!</bold> You reached &e{class} Level 5&7!"
+        - "&7Bonus reward: <color:#55FF55>+500 Coins&7!"
+      broadcast: "&8[&6★&8] &e{player} &7has reached &6{class} Level 5&7!"
+      commands:
+        - "eco give {player} 500"
+    10:
+      sound: "UI_TOAST_CHALLENGE_COMPLETE:1.0:1.0"
+      title: "<gradient:#FFD700:#FFA500><bold>LEVEL 10 MILESTONE!</bold></gradient>"
+      subtitle: "&7Reached &e{class} Level 10&7!"
+      chat_message:
+        - "&8[&6CyayoProfiles&8] &6★ <bold>CONGRATULATIONS!</bold> You reached &e{class} Level 10&7!"
+        - "&7Bonus reward: <color:#55FF55>+1,000 Coins&7!"
+      broadcast: "&8[&6★&8] &e{player} &7has reached &6{class} Level 10&7!"
+      commands:
+        - "eco give {player} 1000"
+    25:
+      sound: "UI_TOAST_CHALLENGE_COMPLETE:1.0:1.0"
+      title: "<gradient:#00F5D4:#7B2CBF><bold>LEVEL 25 MILESTONE!</bold></gradient>"
+      subtitle: "&7Reached &b{class} Level 25&7!"
+      chat_message:
+        - "&8[&6CyayoProfiles&8] &b★ <bold>AMAZING!</bold> You reached &b{class} Level 25&7!"
+        - "&7Bonus reward: <color:#55FF55>+5,000 Coins&7!"
+      broadcast: "&8[&b★&8] &e{player} &7has reached &b{class} Level 25&7!"
+      commands:
+        - "eco give {player} 5000"
+    60:
+      sound: "UI_TOAST_CHALLENGE_COMPLETE:1.0:1.0"
+      title: "<gradient:#FF512F:#DD2476><bold>MAX LEVEL!</bold></gradient>"
+      subtitle: "&7Mastered &6{class} Level 60&7!"
+      chat_message:
+        - "&8[&6CyayoProfiles&8] &6★ <bold>PINNACLE OF POWER!</bold> You reached &6{class} Level 60 (MAX)&7!"
+      broadcast: "&8[&6★&8] &e{player} &7has reached maximum level &6{class} Level 60&7!"
+      commands:
+        - "eco give {player} 20000"

@@ -1,0 +1,146 @@
+# =====================================================
+#                 CyayoProfiles Classes
+# =====================================================
+# Define the RPG classes available on your server here.
+# Optional permission gating per class:
+#   permission: "cyayoprofiles.class.<name>"  # Omit or set ""/"none" for public classes
+#   hide_without_permission: false            # true = hide from GUI; false = show Locked icon
+#   locked_hint: "<yellow>Unlock via VIP Rank!" # Shown via {locked_hint} in locked GUI & chat
+#
+# Starter kit items support both Vanilla materials and MMOItems:
+#   - material: "BREAD"
+#     amount: 16
+#   - mmoitems: "TOOLS_FISHING_ROD:OLD_WOODEN_ROD"
+#     amount: 1
+
+classes:
+  warrior:
+    display_name: "<red><bold>Warrior</bold>"
+    description:
+      - "<gray>A close-quarters brawler with tough defenses"
+      - "<gray>and devastating physical strikes."
+    base_health: 24.0
+    base_hunger: 20
+    walk_speed: 0.2
+    allowed_gear:
+      - "WARRIOR"
+    starter_kit:
+      enabled: true
+      items:
+        - material: "WOODEN_SWORD"
+          amount: 1
+          name: "<gray>Initiate Warrior Blade"
+        - material: "BREAD"
+          amount: 16
+    icon:
+      material: "IRON_SWORD"
+      custom_model_data: 0
+      name: "<red><bold>Warrior</bold>"
+      lore:
+        - "<dark_gray>Melee Combatant"
+        - ""
+        - "<gray>Base Health: <red>24 ❤"
+        - "<gray>Allowed Gear: <yellow>Warrior Gear"
+        - ""
+        - "<gray>Frontline melee fighter with high durability."
+        - ""
+        - "<yellow>▶ Click to select this class!"
+
+  mage:
+    display_name: "<aqua><bold>Mage</bold>"
+    description:
+      - "<gray>Master of ranged elemental magic"
+      - "<gray>with overwhelming spell damage."
+    base_health: 18.0
+    base_hunger: 20
+    walk_speed: 0.2
+    allowed_gear:
+      - "MAGE"
+    starter_kit:
+      enabled: true
+      items:
+        - material: "STICK"
+          amount: 1
+          name: "<aqua>Initiate Wand"
+        - material: "BREAD"
+          amount: 16
+    icon:
+      material: "BLAZE_ROD"
+      custom_model_data: 0
+      name: "<aqua><bold>Mage</bold>"
+      lore:
+        - "<dark_gray>Magic Caster"
+        - ""
+        - "<gray>Base Health: <red>18 ❤"
+        - "<gray>Allowed Gear: <yellow>Mage Gear / Wand"
+        - ""
+        - "<gray>Wielder of deadly arcane spells from afar."
+        - ""
+        - "<yellow>▶ Click to select this class!"
+
+  archer:
+    display_name: "<green><bold>Archer</bold>"
+    description:
+      - "<gray>Agile marksman striking foes from a distance."
+    base_health: 20.0
+    base_hunger: 20
+    walk_speed: 0.22
+    allowed_gear:
+      - "ARCHER"
+    starter_kit:
+      enabled: true
+      items:
+        - material: "BOW"
+          amount: 1
+          name: "<green>Initiate Archer Bow"
+        - material: "ARROW"
+          amount: 64
+        - material: "BREAD"
+          amount: 16
+    icon:
+      material: "BOW"
+      custom_model_data: 0
+      name: "<green><bold>Archer</bold>"
+      lore:
+        - "<dark_gray>Ranged Specialist"
+        - ""
+        - "<gray>Base Health: <red>20 ❤"
+        - "<gray>Allowed Gear: <yellow>Archer Gear / Bow"
+        - ""
+        - "<gray>Fast, nimble, and deadly accurate at long range."
+        - ""
+        - "<yellow>▶ Click to select this class!"
+
+  battlemage:
+    display_name: "<gold><bold>Battle Mage</bold>"
+    description:
+      - "<gray>A hybrid swordsman and spellcaster."
+      - "<gray>Can wield both Warrior and Mage gear!"
+    base_health: 22.0
+    base_hunger: 20
+    walk_speed: 0.2
+    # Hybrid Class: Can equip both WARRIOR and MAGE gear
+    allowed_gear:
+      - "WARRIOR"
+      - "MAGE"
+    starter_kit:
+      enabled: true
+      items:
+        - material: "STONE_SWORD"
+          amount: 1
+          name: "<gold>Initiate Spellsword"
+        - material: "BREAD"
+          amount: 16
+    icon:
+      material: "ENCHANTED_GOLDEN_APPLE"
+      custom_model_data: 0
+      name: "<gold><bold>Battle Mage (Hybrid)</bold>"
+      lore:
+        - "<dark_gray>Hybrid Combatant"
+        - ""
+        - "<gray>Base Health: <red>22 ❤"
+        - "<gray>Allowed Gear: <yellow>Warrior & Mage Gear"
+        - ""
+        - "<gray>Capable of wielding both Warrior and Mage weapons!"
+        - ""
+        - "<yellow>▶ Click to select this class!"

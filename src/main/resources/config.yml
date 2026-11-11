@@ -1,0 +1,124 @@
+# ==============================================================================
+#                           CyayoProfiles Config
+# ==============================================================================
+
+# Pengaturan Penyimpanan Database
+# Pilihan type: "SQLITE" atau "MYSQL"
+database:
+  type: "SQLITE"
+  sqlite:
+    file: "data.db"
+  mysql:
+    host: "localhost"
+    port: 3306
+    database: "cyayoprofiles"
+    username: "root"
+    password: "password"
+    pool:
+      maximum-pool-size: 10
+      minimum-idle: 2
+      connection-timeout: 30000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+
+# Pengaturan Nama Permission (100% bebas diatur admin)
+permissions:
+  use: "cyayoprofiles.use"
+  switch: "cyayoprofiles.switch"
+  create: "cyayoprofiles.create"
+  delete: "cyayoprofiles.delete"
+  admin: "cyayoprofiles.admin"
+
+# Pengaturan Batas Slot Profil
+slots:
+  default_slots: 1
+  permission_tiers:
+    - permission: "cyayoprofiles.slots.5"
+      slots: 5
+    - permission: "cyayoprofiles.slots.4"
+      slots: 4
+    - permission: "cyayoprofiles.slots.3"
+      slots: 3
+    - permission: "cyayoprofiles.slots.2"
+      slots: 2
+    - permission: "cyayoprofiles.slots.1"
+      slots: 1
+
+# Pengaturan Pemain Baru (Belum Memiliki Profil Sama Sekali)
+first_join:
+  # Bersihkan tas sementara saat pemain belum memilih/membuat profil
+  clear_inventory: true
+  # Proteksi agar pemain tanpa profil tidak menyerang/hilang item selama di lobby awal
+  protect_no_profile:
+    enabled: true
+    prevent_damage: true
+    prevent_item_drop: true
+    prevent_item_pickup: true
+    prevent_interact: false
+  # Command yang dijalankan konsol saat pemain pertama kali join dan belum memiliki profil
+  # Placeholder: {player}
+  # Contoh: ["title {player} title ...", "msg {player} Silakan klik NPC untuk buat karakter!"]
+  no_profile_commands: []
+
+# Lokasi Spawn saat Pemain Selesai Membuat Profil Karakter Baru
+# Gunakan perintah /cyayoprofiles setspawn in-game untuk mengatur koordinat otomatis!
+new_profile_spawn:
+  enabled: true
+  # Jika true, hanya teleport saat membuat profil pertama kali. Jika false, setiap buat slot baru akan di-teleport ke spawn awal.
+  teleport_on_first_profile_only: false
+  world: "world"
+  x: 0.5
+  y: 65.0
+  z: 0.5
+  yaw: 0.0
+  pitch: 0.0
+
+# Pengaturan Transisi Pergantian Profil
+profile_switch:
+  cooldown_seconds: 5
+  freeze_duration_ticks: 20
+  send_title_on_switch: true
+  title_fade_in: 5
+  title_stay: 30
+  title_fade_out: 10
+
+# Keamanan & Anti-Exploit (Mencegah Dupe / Kabur Saat Combat / Starter Kit Farm)
+security:
+  combat_tag:
+    enabled: true
+    duration_seconds: 10
+    tag_on_pvp: true
+    tag_on_pve: true
+  # World di mana pemain DILARANG berganti profil (contoh: dungeon, arena_pvp)
+  blacklisted_worlds: []
+  # Pengecekan kondisi pemain saat ingin berganti profil
+  state_checks:
+    block_while_dead: true
+    block_while_in_vehicle: true
+    block_while_gliding: true
+    block_while_in_air_falling: true
+    block_while_in_liquid: true
+    block_while_sleeping: true
+  # Cooldown menghapus profil untuk mencegah farming starter kit
+  delete_cooldown_seconds: 60
+
+# Penyimpanan Otomatis (Sistem Cicil / Staggered agar bebas lag)
+auto_save:
+  enabled: true
+  # Interval satu siklus auto-save penuh (dalam detik)
+  interval_seconds: 300
+  # Jumlah maksimal pemain yang di-save dalam satu batch cicilan
+  batch_size: 5
+  # Jeda (dalam ticks, 20 ticks = 1 detik) antar batch cicilan
+  batch_interval_ticks: 10
+  # Pastikan data profil selalu tersimpan saat berganti profil atau keluar/disconnect dari server
+  save_on_switch: true
+  save_on_quit: true
+
+# Pembatasan Penggunaan Senjata, Armor & Atribut Requirement
+item_restrictions:
+  enabled: true
+  check_weapons: true
+  check_armor: true
+  check_offhand: true
+  actionbar_cooldown_seconds: 2

@@ -1,0 +1,157 @@
+# ==============================================================================
+#                      CyayoProfiles - GUI: Main Profile Menu
+# ==============================================================================
+# Full customization for the character/profile selection GUI.
+# Supports slot arrays [0, 1, 2, ...] and placeholders {placeholder} or %placeholder%.
+
+title: "<dark_gray>Character Profiles"
+size: 45
+
+filler_items:
+  outer_border:
+    material: "BLACK_STAINED_GLASS_PANE"
+    custom_model_data: 0
+    name: " "
+    slots: [0, 1, 2, 3, 5, 6, 7, 8, 9, 17, 18, 26, 27, 35, 36, 37, 38, 39, 41, 42, 43, 44]
+
+  inner_accent:
+    material: "GRAY_STAINED_GLASS_PANE"
+    custom_model_data: 0
+    name: " "
+    slots: [10, 11, 12, 13, 14, 15, 16, 19, 25, 28, 29, 30, 31, 32, 33, 34]
+
+custom_items:
+  player_header:
+    slot: 4
+    material: "PLAYER_HEAD"
+    custom_model_data: 0
+    name: "<gold><bold>Adventurer: {player}</bold>"
+    lore:
+      - "<dark_gray>Account Summary"
+      - ""
+      - "<gray>Active Slot: <yellow>#{slot}"
+      - "<gray>Unlocked Slots: <green>{max_slots} Slots"
+      - ""
+      - "<gray>Current Class: {class_display}"
+      - "<gray>Class Level: <gold>{level} <dark_gray>(Max {max_level})"
+      - "<gray>XP: <yellow>{xp} <gray>/ <green>{req_xp} <gray>({progress_percent}%)"
+      - "<gray>Health: <red>{health} / {max_health} ❤"
+      - "<gray>Location: <white>{world} [{x}, {y}, {z}]"
+      - ""
+      - "<yellow>Select a slot below to switch or create a character!"
+
+profile_slot_locations:
+  1: 20
+  2: 21
+  3: 22
+  4: 23
+  5: 24
+
+items:
+  active_profile:
+    material: "CLASS_ICON"
+    fallback_material: "PLAYER_HEAD"
+    custom_model_data: 0
+    name: "<green><bold>Slot #{slot}: {class_display}</bold> {gamemode_badges} <gray>[Active]"
+    lore:
+      - "<dark_gray>Currently Active Character"
+      - ""
+      - "<gray>Status: {status_colored}"
+      - "<gray>Mode: <white>{gamemode_names} {lives_info}"
+      - "<gray>Level: <gold>{level} <dark_gray>(Max {max_level})"
+      - "<gray>XP Progress: <yellow>{xp} <gray>/ <green>{req_xp} <gray>({progress_percent}%)"
+      - "<gray>[{progress_bar}<gray>]"
+      - "<gray>Remaining XP: <aqua>{remaining_xp}"
+      - ""
+      - "<gray>Health: <red>{health} / {max_health} ❤"
+      - "<gray>Hunger: <gold>{hunger}/20 🍖"
+      - "<gray>Speed: <aqua>{walk_speed}"
+      - "<gray>Allowed Gear: <yellow>{allowed_gear}"
+      - "<gray>Location: <white>{world} [{x}, {y}, {z}]"
+      - ""
+      - "<gray>Created: <dark_gray>{created_at}"
+      - "<gray>Last Played: <dark_gray>{last_played}"
+      - ""
+      - "<green>✔ You are currently playing this character."
+      - "<dark_gray>(Shift + Right Click to Delete Profile)"
+
+  saved_profile:
+    material: "CLASS_ICON"
+    fallback_material: "PLAYER_HEAD"
+    custom_model_data: 0
+    name: "<yellow><bold>Slot #{slot}: {class_display}</bold> {gamemode_badges}"
+    lore:
+      - "<dark_gray>Saved Character"
+      - ""
+      - "<gray>Status: {status_colored}"
+      - "<gray>Mode: <white>{gamemode_names} {lives_info}"
+      - "<gray>Level: <gold>{level} <dark_gray>(Max {max_level})"
+      - "<gray>XP Progress: <yellow>{xp} <gray>/ <green>{req_xp} <gray>({progress_percent}%)"
+      - "<gray>[{progress_bar}<gray>]"
+      - "<gray>Remaining XP: <aqua>{remaining_xp}"
+      - ""
+      - "<gray>Health: <red>{health} / {max_health} ❤"
+      - "<gray>Hunger: <gold>{hunger}/20 🍖"
+      - "<gray>Allowed Gear: <yellow>{allowed_gear}"
+      - "<gray>Last Location: <white>{world} [{x}, {y}, {z}]"
+      - ""
+      - "<gray>Created: <dark_gray>{created_at}"
+      - "<gray>Last Played: <dark_gray>{last_played}"
+      - ""
+      - "<yellow>▶ Left Click to switch to this profile!"
+      - "<red>▶ Shift + Right Click to delete this profile."
+
+  fallen_profile:
+    material: "WITHER_SKELETON_SKULL"
+    custom_model_data: 0
+    name: "<dark_red><bold>☠ Slot #{slot}: {class_display}</bold> {gamemode_badges} <red>[FALLEN]"
+    lore:
+      - "<dark_gray>Fallen Hardcore Character"
+      - ""
+      - "<gray>Status: <dark_red>PERMANENTLY FALLEN"
+      - "<gray>Mode: <white>{gamemode_names}"
+      - "<gray>Final Level: <gold>{level}"
+      - "<gray>Fallen At: <dark_gray>{fallen_at}"
+      - "<gray>Cause: <red>{fallen_reason}"
+      - "<gray>Fallen Location: <white>{world} [{x}, {y}, {z}]"
+      - ""
+      - "<red>✖ This character is locked and can no longer be played."
+      - "<yellow>▶ Shift + Right Click to remove memorial and free this slot."
+
+  empty_slot:
+    material: "LIME_STAINED_GLASS_PANE"
+    custom_model_data: 0
+    name: "<green><bold>+ Create New Character (Slot #{slot})</bold>"
+    lore:
+      - "<dark_gray>Empty Slot"
+      - ""
+      - "<gray>This character slot is empty!"
+      - "<gray>Create a brand new adventure with another class."
+      - ""
+      - "<yellow>▶ Click to choose a class & start playing!"
+
+  locked_slot:
+    material: "BARRIER"
+    custom_model_data: 0
+    name: "<red><bold>🔒 Slot #{slot} Locked</bold>"
+    lore:
+      - "<dark_gray>Locked Slot"
+      - ""
+      - "<gray>You do not have permission to unlock this slot."
+      - "<gray>Available Slots: <yellow>{max_slots} Characters"
+      - "<gray>Upgrade your rank or obtain extra slot permissions!"
+      - ""
+      - "<dark_gray>Contact server staff for rank upgrades."
+
+  close_button:
+    slots: [40]
+    material: "BARRIER"
+    custom_model_data: 0
+    name: "<red><bold>✖ Close Menu</bold>"
+    lore:
+      - "<gray>Click to return to the game."
+
+fill_empty:
+  enabled: true
+  material: "BLACK_STAINED_GLASS_PANE"
+  name: " "

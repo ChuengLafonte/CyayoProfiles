@@ -1,0 +1,63 @@
+# ==============================================================================
+#            CyayoProfiles - GUI: Confirm Character Deletion
+# ==============================================================================
+
+title: "<dark_red><bold>Delete Slot #{slot}?</bold>"
+size: 27
+
+filler_items:
+  danger_border:
+    material: "RED_STAINED_GLASS_PANE"
+    custom_model_data: 0
+    name: " "
+    slots: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26]
+
+  inner_glass:
+    material: "BLACK_STAINED_GLASS_PANE"
+    custom_model_data: 0
+    name: " "
+    slots: [10, 12, 14, 16]
+
+confirm_button:
+  slots: [11]
+  material: "RED_CONCRETE"
+  custom_model_data: 0
+  name: "<red><bold>✔ YES, DELETE PERMANENTLY</bold>"
+  lore:
+    - "<dark_red><bold>SEVERE WARNING!</bold>"
+    - "<red>All inventory items, armor, level ({level}),"
+    - "<red>and profile data will be LOST FOREVER"
+    - "<red>and CANNOT be recovered!"
+    - ""
+    - "<yellow>▶ Click to delete this profile."
+
+info_item:
+  slots: [13]
+  material: "CLASS_ICON"
+  fallback_material: "PAPER"
+  custom_model_data: 0
+  name: "<gold><bold>Profile Info - Slot #{slot}</bold>"
+  lore:
+    - "<gray>Player: <white>{player}"
+    - "<gray>Class: {class_display}"
+    - "<gray>Class Level: <gold>{level} <dark_gray>(Max {max_level})"
+    - "<gray>XP Progress: <yellow>{xp} / {req_xp} <gray>({progress_percent}%)"
+    - "<gray>Last Location: <white>{world} [{x}, {y}, {z}]"
+    - "<gray>Created: <dark_gray>{created_at}"
+    - ""
+    - "<red>Make sure you are deleting the right character!"
+
+cancel_button:
+  slots: [15]
+  material: "LIME_CONCRETE"
+  custom_model_data: 0
+  name: "<green><bold>✖ CANCEL</bold>"
+  lore:
+    - "<gray>Safely return to the profile menu."
+    - ""
+    - "<yellow>▶ Click to cancel."
+
+fill_empty:
+  enabled: true
+  material: "BLACK_STAINED_GLASS_PANE"
+  name: " "
