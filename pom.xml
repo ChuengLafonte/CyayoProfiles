@@ -6,14 +6,14 @@
 
     <groupId>id.cyayo</groupId>
     <artifactId>CyayoProfiles</artifactId>
-    <version>1.0.0</version>
+    <version>1.1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>CyayoProfiles</name>
     <description>Wynncraft-style Multi-Character Class Profile System with SQL Storage and MMOItems Restriction</description>
 
     <properties>
-        <java.version>21</java.version>
+        <java.version>25</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -73,6 +73,14 @@
             <scope>provided</scope>
         </dependency>
 
+        <!-- SeriaCore Ecosystem Backbone (resolver tag <sc:...> / SeriaPrefix) -->
+        <dependency>
+            <groupId>id.seria</groupId>
+            <artifactId>seriacore</artifactId>
+            <version>2.5.0-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+
         <!-- Adventure & MiniMessage -->
         <dependency>
             <groupId>net.kyori</groupId>
@@ -126,7 +134,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <version>3.5.3</version>
+                <version>3.6.2</version>
                 <executions>
                     <execution>
                         <phase>package</phase>
